@@ -1,0 +1,24 @@
+Several approaches can resolve the issue:
+
+1. **Avoid mixing units whenever possible:** If you can restructure your layout, try to avoid combining percentages and fixed units within the `calc()` function.
+
+2. **Use viewports units (vw, vh):**  Replace percentages with viewport units (vw for viewport width, vh for viewport height). Viewport units are relative to the browser window's size, offering more predictable results when combining them with pixels.
+
+3. **Fallback value:** Provide a fallback value using a different unit to ensure your layout is still functional if the `calc()` function yields an unexpected result. This will ensure graceful degradation.   
+
+Example using viewports units:
+
+```css
+.element {
+  width: calc(50vw - 10px);
+}
+```
+
+Example with fallback:
+
+```css
+.element {
+  width: calc(50% - 10px) ;
+  width: 400px; /* Fallback if calc() doesn't work as expected */
+}
+```
